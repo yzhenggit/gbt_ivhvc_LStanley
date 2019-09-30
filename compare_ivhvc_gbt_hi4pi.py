@@ -80,9 +80,9 @@ hi4pi_spec = hi4pi_data[:, hi4pi_py, hi4pi_px]
 ### Now plot the GBT data 2D image:
 indv = np.argmin(abs(ld_vlsr-pv))
 
-figsize = (4, 6)
+figsize = (4.5, 6)
 fig = plt.figure(figsize=figsize)
-ax = fig.add_axes([0.1, 0.15, 0.8, 0.8], projection=ld_wcs)
+ax = fig.add_axes([0.1, 0.1, 0.75, 0.8], projection=ld_wcs)
 ax.scatter([ld_px], [ld_py], color='r', s=40, facecolor='none', edgecolor='r', lw=2)
 im = ax.imshow(ld_data[indv], origin='lower', cmap=plt.cm.Blues)
 ax.coords[0].set_major_formatter('d.d')
@@ -105,7 +105,7 @@ ax.set_ylabel('Dec (J2000)', fontsize=14)
 cb = fig.colorbar(im)
 cb.set_label('Tb (K)', fontsize=14)
 fig.tight_layout()
-fig.savefig('figs/%s_LD_GBT_RA%.2f_DEC%.2f_vchan.pdf'%(point_tag, pra, pdec, ld_vlsr[indv]))
+fig.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_vchan.pdf'%(point_tag, pra, pdec))
 plt.close()
 
 ## and plot the spectra
@@ -118,10 +118,10 @@ plt.legend(fontsize=14)
 plt.xlim(-500, 200)
 plt.xlabel('Velocity (km/s)')
 plt.ylabel('Tb (km/s)')
-plt.savefig('figs/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI.pdf'%(point_tag, pra, pdec))
+plt.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI.pdf'%(point_tag, pra, pdec))
 
 plt.ylim(-0.1, 0.5)
-plt.savefig('figs/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI_zoom.pdf'%(point_tag, pra, pdec))
+plt.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI_zoom.pdf'%(point_tag, pra, pdec))
 plt.close()
 
 print(pra, pdec, ld_px, ld_py)

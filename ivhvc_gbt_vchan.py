@@ -60,7 +60,7 @@ for pv in np.mgrid[-400:-99:10]:
     ax.set_ylabel('Dec (J2000)', fontsize=14)
     cb = fig.colorbar(im)
     cb.set_label('Tb (K)', fontsize=14)
-    figfile = 'figs/all_vchans_GBT/LD_GBT_vchan_%.2fkms.pdf'%(ld_vlsr[indv])
+    figfile = 'figs/LD_GBT_all_vchans/LD_GBT_vchan_%.2fkms.pdf'%(ld_vlsr[indv])
     fig.savefig(figfile)
     print(figfile)
     plt.close()
