@@ -84,7 +84,7 @@ figsize = (4.5, 6)
 fig = plt.figure(figsize=figsize)
 ax = fig.add_axes([0.1, 0.1, 0.75, 0.8], projection=ld_wcs)
 ax.scatter([ld_px], [ld_py], color='r', s=40, facecolor='none', edgecolor='r', lw=2)
-im = ax.imshow(ld_data[indv], origin='lower', cmap=plt.cm.Blues)
+im = ax.imshow(ld_data[indv], origin='lower', cmap=plt.cm.Blues, vmin=0.01, vmax=0.1)
 ax.coords[0].set_major_formatter('d.d')
 ax.coords[1].set_major_formatter('d.d')
 
@@ -120,7 +120,10 @@ plt.xlabel('Velocity (km/s)')
 plt.ylabel('Tb (km/s)')
 plt.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI.pdf'%(point_tag, pra, pdec))
 
-plt.ylim(-0.1, 0.5)
+if point_tag == 'M33':
+    plt.ylim(-0.1, 3)
+else:
+    plt.ylim(-0.1, 0.5)
 plt.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI_zoom.pdf'%(point_tag, pra, pdec))
 plt.close()
 
