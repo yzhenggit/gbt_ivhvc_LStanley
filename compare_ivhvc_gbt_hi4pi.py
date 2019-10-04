@@ -62,7 +62,8 @@ ld_spec = ld_data[:, ld_py, ld_px]
 
 ### Now get HI4PI spectra
 # Get HI4PI cube:
-hi4pi_cube = '/Users/Yong/Dropbox/databucket/HI4PI_cubes/CAR_F02.fits'
+# hi4pi_cube = '/Users/Yong/Dropbox/databucket/HI4PI_cubes/CAR_F02.fits'
+hi4pi_cube = '/Users/Yong/Dropbox/databucket/HI4PI_cubes/SFL_F02.fits'
 hi4pi_data = fits.getdata(hi4pi_cube)
 hi4pi_hdr = fits.getheader(hi4pi_cube)
 
@@ -111,20 +112,20 @@ plt.close()
 ## and plot the spectra
 # now plot things
 plt.figure()
-plt.plot(hi4pi_vlsr, hi4pi_spec, color='k', label='HI4PI')
+plt.plot(hi4pi_vlsr, hi4pi_spec, color='k', label='HI4PI (SFL)')
 plt.plot(ld_vlsr,ld_spec, color='r', label='GBT/LD')
 plt.title('GBT vs HI4PI, RA=%.2f, DEC=%.2f'%(pra, pdec))
 plt.legend(fontsize=14)
 plt.xlim(-500, 200)
 plt.xlabel('Velocity (km/s)')
 plt.ylabel('Tb (km/s)')
-plt.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI.pdf'%(point_tag, pra, pdec))
+plt.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI-SFL.pdf'%(point_tag, pra, pdec))
 
 if point_tag == 'M33':
     plt.ylim(-0.1, 3)
 else:
     plt.ylim(-0.1, 0.5)
-plt.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI_zoom.pdf'%(point_tag, pra, pdec))
+plt.savefig('figs/LD_GBT_cloud_spec/%s_LD_GBT_RA%.2f_DEC%.2f_wHI4PI-SFL_zoom.pdf'%(point_tag, pra, pdec))
 plt.close()
 
 print(pra, pdec, ld_px, ld_py)
